@@ -17,12 +17,14 @@ class BasicService
 {
     /**
      * @param int $status
+     * @param array $data
      * @return array
      */
-    protected function errorResponse($status = 404)
+    protected function errorResponse($status = 404, $data = [])
     {
         return [
-            'status' => $status
+            'status' => $status,
+            'data' => $data
         ];
     }
 

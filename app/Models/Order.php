@@ -29,5 +29,6 @@ class Order extends Model
     protected $fillable = [
         'id',
         'suborders_count',
+        'price',
     ];
 }

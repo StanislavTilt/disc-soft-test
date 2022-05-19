@@ -14,7 +14,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'suborders_count' => $this->faker->numberBetween(1,100)
+            'suborders_count' => $this->faker->numberBetween(1,100),
+            'price' => $this->faker->numberBetween(1,100),
         ];
     }
 }

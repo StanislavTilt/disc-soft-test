@@ -32,19 +32,13 @@ class SearchMovieService extends BasicService
      */
     public function search(array $searchData)
     {
-        $searchString = implode("%", array_values($searchData));
-        $result = Http::get(config('imdb.urls.search') . $this->api_key . '/' . $searchString)->json()['results'];
-
-        return [
-            'status' => 404,
-            'data' => [
-                1,2,4,5
-            ]
-        ];
+        $searchData['title'] = str_replace(' ', "%20", $searchData['title']);
+        $result = Http::get(config('imdb.urls.search') . $this->api_key . '/' . $searchData['title'])->json()['results'];
 
         if (count($result) == 0) {
             return $this->errorResponse();
         }
+
         if (count($result) == 1) {
             $id = current($result)['id'];
             $movie = $this->getMovieById($id);
@@ -74,7 +68,10 @@ class SearchMovieService extends BasicService
             return $this->errorResponse();
         }
 
-        return $this->successResponse(200, MovieResource::make(current($movies)));
+        $movie = current($movies);
+        $movie['rating'] = $this->getRatings($movie['id'])['imDb'];
+
+        return $this->successResponse(200, MovieResource::make($movie));
     }
 
     /**
