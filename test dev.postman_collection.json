@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "0ce457d0-2c00-4954-ad84-4ecb2f7b0b13",
+		"name": "test dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}api/movies/search?title=inception 2010",
+							"host": [
+								"{{API_URL}}api"
+							],
+							"path": [
+								"movies",
+								"search"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "inception 2010"
+								},
+								{
+									"key": "year",
+									"value": "2018",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://testdev/",
+			"type": "string"
+		}
+	]
+}
